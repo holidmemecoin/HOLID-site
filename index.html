@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HOLID — Live on Solana</title>
+  <meta name="description" content="HOLID is live on Solana. Clear brand, clean execution, real community." />
+  <meta name="theme-color" content="#0c1117" />
+  <style>
+    :root {
+      --bg: #0c1117;
+      --panel: #0f1622;
+      --text: #e6eefc;
+      --muted: #9fb2cc;
+      --accent1: #4ade80;
+      --accent2: #8b5cf6;
+      --accent3: #22d3ee;
+      --outline: #1f2a3a;
+      --chip: #101826;
+      --chipBorder: #1a2434;
+      --buttonGrad: linear-gradient(90deg, var(--accent1), var(--accent3), var(--accent2));
+      --buttonText: #0a0f16;
+      --cardBorder: 1px solid var(--outline);
+      --radius: 14px;
+      --radiusSm: 10px;
+      --shadow: 0 10px 35px rgba(0,0,0,.45);
+      --glow: 0 0 0 1px rgba(34,211,238,.25), 0 8px 40px rgba(34,211,238,.15);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; background:var(--bg); color:var(--text); font:16px/1.55 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, system-ui; }
+    a { color:#7ab0ff; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .wrap { max-width: 1080px; margin:0 auto; padding: 24px 18px 100px; }
+
+    header { display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:12px; }
+    .brand-badge { background:var(--chip); border:1px solid var(--chipBorder); padding:8px 12px; border-radius:999px; font-size:13px; text-transform:uppercase; font-weight:800; letter-spacing:.4px; }
+    .top-links { display:flex; gap:16px; }
+
+    h1 { font-size: clamp(32px, 5.8vw, 56px); line-height:1.05; margin: 18px 0 8px; font-weight:900; letter-spacing:.3px; }
+    .lede { color:var(--muted); font-size:17px; max-width:720px; margin-bottom:22px; }
+
+    .ctaRow { display:flex; flex-wrap:wrap; gap:12px; margin:22px 0 12px; }
+    .btnBig { display:inline-flex; align-items:center; justify-content:center; min-height:52px; padding: 12px 18px; border-radius:12px; background:var(--buttonGrad); color:var(--buttonText); font-weight:800; letter-spacing:.25px; border:0; box-shadow:var(--shadow); white-space:nowrap; }
+    .btnGhost { display:inline-flex; align-items:center; justify-content:center; min-height:46px; padding:10px 16px; border-radius:12px; background:rgba(255,255,255,.02); color:var(--text); border:1px solid var(--chipBorder); font-weight:700; }
+
+    .grid { display:grid; gap:16px; grid-template-columns:1fr; margin-top:22px; }
+    @media (min-width: 940px) { .grid { grid-template-columns: 1.1fr .9fr; } }
+    .card { background:var(--panel); border:var(--cardBorder); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow); }
+    .label { color:var(--muted); font-weight:700; margin-bottom:6px; }
+    .value { font-size:26px; font-weight:900; }
+
+    .inputRow { display:flex; gap:10px; align-items:center; }
+    .inputLike { flex:1; background:#0b1320; color:var(--muted); border:1px solid var(--chipBorder); padding:12px 14px; border-radius:10px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .copyBtn { background:var(--chip); border:1px solid var(--chipBorder); color:var(--text); padding:10px 14px; border-radius:10px; }
+
+    .hero { background:
+      radial-gradient(1200px 400px at -10% -20%, rgba(99,102,241,.25), transparent 70%),
+      radial-gradient(1000px 400px at 120% -10%, rgba(45,212,191,.22), transparent 70%);
+      border-radius:var(--radius); overflow:hidden; border:var(--cardBorder); box-shadow:var(--shadow);
+    }
+    .heroInner { padding:16px; }
+    .poster { width:100%; height:auto; display:block; border-radius:12px; border:1px solid var(--chipBorder); overflow:hidden; }
+    .svgFrame { background:#0d1826; border-radius:12px; border:1px solid var(--chipBorder); }
+
+    /* Section divider */
+    .section-divider {
+      height: 2px;
+      margin: 42px 0 22px;
+      background: linear-gradient(90deg, transparent, var(--accent3), transparent);
+      border: 0;
+    }
+
+    /* WOW Roadmap */
+    .roadmapWrap { margin-top:10px; }
+    .roadmapHero {
+      position:relative; border-radius:16px; padding: 26px 18px 28px;
+      background: radial-gradient(1000px 320px at 20% -10%, rgba(34,211,238,.18), transparent 60%),
+                  radial-gradient(900px 320px at 100% -20%, rgba(139,92,246,.18), transparent 60%),
+                  #0b1320;
+      border:1px solid #132033;
+      box-shadow: var(--glow);
+      overflow:hidden;
+    }
+    .roadmapHero h2 { margin:0 0 10px; font-size: clamp(26px, 3.8vw, 36px); letter-spacing:.3px; }
+    .roadmapHero p { margin:0; color:var(--muted); max-width:820px; }
+    .rmGrid { display:grid; gap:14px; grid-template-columns: 1fr; margin-top:16px; }
+    @media (min-width:900px) { .rmGrid { grid-template-columns: repeat(2, 1fr); } }
+    .rmCard {
+      background: linear-gradient(180deg, rgba(16,24,38,.65), rgba(16,24,38,.35));
+      border:1px solid #1a2a3d; border-radius:14px; padding:16px; position:relative; overflow:hidden;
+      opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease;
+    }
+    .rmCard.visible { opacity:1; transform: translateY(0); animation: fadeUp .8s ease forwards; }
+    .rmBadge { display:inline-flex; align-items:center; gap:8px; font-weight:800; color:#0b1220; background:var(--buttonGrad); border-radius:999px; padding:6px 12px; }
+    .rmTitle { margin:10px 0 6px; font-weight:900; font-size:20px; letter-spacing:.2px; }
+    .rmList { margin:0; padding-left:18px; color:var(--muted); }
+    .rmList li { margin:6px 0; }
+    .orb { position:absolute; width:160px; height:160px; border-radius:50%; filter: blur(28px); opacity:.35; animation: pulse 6s ease-in-out infinite; }
+    .orb.green { background:#34d399; right:-60px; top:-40px; }
+    .orb.cyan { background:#22d3ee; left:-60px; bottom:-40px; }
+
+    /* Mr. Holiday card */
+    .aboutCard { background:var(--panel); border:1px solid #1a2a3d; border-radius:16px; padding:18px; box-shadow: var(--shadow); margin-bottom:16px; }
+    .aboutCard h3 { margin:0 0 8px; font-size: clamp(22px, 3.4vw, 28px); }
+    .aboutCard p { margin: 6px 0; color: var(--muted); }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: .35; }
+      50%      { transform: scale(1.1); opacity: .5; }
+    }
+
+    footer { margin-top: 30px; display:flex; align-items:center; justify-content:space-between; gap:12px; color:var(--muted); font-size:14px; }
+    .pillLinks { display:flex; gap:14px; }
+    .pillLinks a { background:var(--chip); border:1px solid var(--chipBorder); padding:8px 12px; border-radius:999px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand-badge">Holid</div>
+      <div class="top-links">
+        <a href="https://t.me/+4ow2QOfPFQs0ZWQx" id="tgLink">Telegram</a>
+        <a href="https://x.com/holidmemecoin" id="xLink">X</a>
+      </div>
+    </header>
+
+    <h1>HOLID IS LIVE ON SOLANA</h1>
+    <p class="lede">A meme coin with momentum — clear brand, clean execution, real community.</p>
+
+    <div class="ctaRow">
+      <a class="btnBig" href="https://moonshot.com/8WcdbuWEp21D7EkM5GzRX3hDontm9cBAH7TdmGosmoon?ref=l7zG2XuZyk" id="openMoonshot">Open on Moonshot</a>
+      <a class="btnGhost" href="https://moonshot.com/8WcdbuWEp21D7EkM5GzRX3hDontm9cBAH7TdmGosmoon?ref=l7zG2XuZyk" id="chartBtn">Chart</a>
+      <a class="btnGhost" href="https://solscan.io/token/8wcdbuWEp21D7EkM5GzRX3hDontm9cBAH7TdmGosmoon" id="viewSolscan">View on Solscan</a>
+      <a class="btnGhost" href="#contract">Contract</a>
+    </div>
+
+    <div class="grid">
+      <section class="card">
+        <div class="label">Chain</div>
+        <div class="value">Solana</div>
+
+        <div style="height:10px"></div>
+        <div class="label">Ticker</div>
+        <div class="value">$HOLID</div>
+
+        <div style="height:10px"></div>
+        <div class="label">Status</div>
+        <div class="value">Live</div>
+      </section>
+
+      <section class="hero">
+        <div class="heroInner">
+          <div class="svgFrame">
+            <!-- Inline poster -->
+            <svg class="poster" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Holid Poster">
+              <defs>
+                <linearGradient id="g1" x1="0" x2="1">
+                  <stop offset="0" stop-color="#34d399"/>
+                  <stop offset="1" stop-color="#8b5cf6"/>
+                </linearGradient>
+              </defs>
+              <rect width="1200" height="800" fill="#0a1523"/>
+              <text x="600" y="150" font-size="120" font-weight="900" text-anchor="middle" fill="#ffe59e">IN $HOLID</text>
+              <text x="600" y="260" font-size="120" font-weight="900" text-anchor="middle" fill="#ffe59e">WE TRUST</text>
+              <circle cx="900" cy="500" r="160" fill="url(#g1)" stroke="#0e2238" stroke-width="18"/>
+              <rect x="870" y="370" width="60" height="40" rx="8" fill="#0e2238"/>
+              <rect x="950" y="370" width="60" height="40" rx="8" fill="#0e2238"/>
+              <path d="M785 580 q115 80 230 0" fill="none" stroke="#0e2238" stroke-width="20" stroke-linecap="round"/>
+              <rect x="210" y="420" width="230" height="180" rx="22" fill="#103149" stroke="#0e2238" stroke-width="14"/>
+              <circle cx="260" cy="510" r="34" fill="#34d399"/>
+              <path d="M220 420 v-40 h210 v40" fill="#103149" stroke="#0e2238" stroke-width="14"/>
+            </svg>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <hr class="section-divider">
+
+    <div class="grid" id="contract" style="margin-top:6px;">
+      <section class="card">
+        <div class="label">Contract</div>
+        <div class="inputRow">
+          <div class="inputLike" id="mintText">8wcdbuWEp21D7EkM5GzRX3hDontm9cBAH7TdmGosmoon</div>
+          <button class="copyBtn" id="copyMint">Copy</button>
+        </div>
+        <div class="ctaRow" style="margin-top:16px;">
+          <a class="btnBig" href="https://moonshot.com/8WcdbuWEp21D7EkM5GzRX3hDontm9cBAH7TdmGosmoon?ref=l7zG2XuZyk">Buy on Moonshot</a>
+          <a class="btnGhost" href="https://solscan.io/token/8wcdbuWEp21D7EkM5GzRX3hDontm9cBAH7TdmGosmoon">Open on Solscan</a>
+        </div>
+      </section>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- About Mr. Holiday (above roadmap) -->
+    <section class="aboutCard">
+      <h3>Meet Mr. Holiday — Our Mascot</h3>
+      <p><strong>Mr. Holiday</strong> carries the cheerful spirit of good times and brighter days ahead. His smile comes from a simple promise: every holder deserves a holiday — freedom from stress, wins together, and a community that celebrates.</p>
+      <p>When markets wobble, he raises his torch to light the way forward. It’s more than a coin; it’s a culture of fun, resilience, and shared momentum. If you’re here, you’re part of the parade.</p>
+    </section>
+
+    <!-- WOW Roadmap Section -->
+    <section class="roadmapWrap" id="roadmap">
+      <div class="roadmapHero">
+        <div class="orb green"></div>
+        <div class="orb cyan"></div>
+        <h2>HOLID Roadmap</h2>
+        <p>Clear, transparent milestones. Built with community momentum: ship fast, keep it fun, keep it real.</p>
+
+        <div class="rmGrid">
+          <div class="rmCard">
+            <span class="rmBadge">Q3 2025</span>
+            <div class="rmTitle">Foundations</div>
+            <ul class="rmList">
+              <li>Token launch on Solana, website & brand finalize</li>
+              <li>Telegram + X growth (memes, contests, airdrops)</li>
+              <li>“First 1000” holders rewards & snapshot</li>
+            </ul>
+          </div>
+
+          <div class="rmCard">
+            <span class="rmBadge">Q4 2025</span>
+            <div class="rmTitle">Liquidity & Awareness</div>
+            <ul class="rmList">
+              <li>Liquidity expansion & analytics dashboards</li>
+              <li>Apply for CoinGecko / CMC listings</li>
+              <li>NFT teaser drops featuring Mr. Holiday</li>
+            </ul>
+          </div>
+
+          <div class="rmCard">
+            <span class="rmBadge">Q1 2026</span>
+            <div class="rmTitle">Utility & Partnerships</div>
+            <ul class="rmList">
+              <li>“Holiday Perks” staking/rewards pilot</li>
+              <li>Influencer collabs & cross‑community events</li>
+              <li>Telegram mini‑app for tipping & games</li>
+            </ul>
+          </div>
+
+          <div class="rmCard">
+            <span class="rmBadge">Q2 2026</span>
+            <div class="rmTitle">Ecosystem Growth</div>
+            <ul class="rmList">
+              <li>Explore community DAO governance</li>
+              <li>Limited Mr. Holiday NFT collection</li>
+              <li>“Holid Locker Room” — gamified raffles</li>
+            </ul>
+          </div>
+
+          <div class="rmCard">
+            <span class="rmBadge">Q3 2026</span>
+            <div class="rmTitle">Expansion & Integration</div>
+            <ul class="rmList">
+              <li>Integrations with Solana DeFi partners</li>
+              <li>Merch drops: tees, hats, stickers</li>
+              <li>First IRL meetup: “Holiday Jam”</li>
+            </ul>
+          </div>
+
+          <div class="rmCard">
+            <span class="rmBadge">Q4 2026</span>
+            <div class="rmTitle">The Great Holiday Season</div>
+            <ul class="rmList">
+              <li>Global charity tie‑in & holiday airdrops</li>
+              <li>Payments integrations for real usage</li>
+              <li>2027 foundation & growth plan</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> HOLID • Built on Solana</div>
+      <div class="pillLinks">
+        <a href="https://t.me/+4ow2QOfPFQs0ZWQx" id="tgLink2">Telegram</a>
+        <a href="https://x.com/holidmemecoin" id="xLink2">X</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Copy contract
+    document.getElementById("copyMint").addEventListener("click", () => {
+      const txt = document.getElementById("mintText").textContent.trim();
+      navigator.clipboard.writeText(txt);
+      const b = document.getElementById("copyMint");
+      b.textContent = "Copied!";
+      setTimeout(()=> b.textContent="Copy", 1200);
+    });
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Intersection Observer for professional fade-up animation
+    const cards = document.querySelectorAll('.rmCard');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+    cards.forEach(card => observer.observe(card));
+  </script>
+</body>
+</html>
